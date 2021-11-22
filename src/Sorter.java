@@ -50,7 +50,18 @@ public class Sorter {
 	}
 
 	public void mergeSort() {
+		mergeSort(nums);
+	}
 
+	private void mergeSort(int[] a) {
+		if (a.length > 1) {
+			int middle = a.length / 2;
+			int[] left = Arrays.copyOfRange(a, 0, middle);
+			int[] right = Arrays.copyOfRange(a, middle, a.length);
+			mergeSort(left);
+			mergeSort(right);
+			merge(a, left, right);
+		}
 	}
 
 	private void merge(int[] a, int[] left, int[] right) {
